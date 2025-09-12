@@ -9,7 +9,7 @@ Simple static site optimized for Cloudflare Pages. The page is written in plain 
   ```
 - Deploy with:
   ```bash
-  npx wrangler pages publish public
+  npx wrangler pages deploy public
   ```
 
 ## Structure
