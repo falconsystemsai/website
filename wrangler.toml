@@ -1,4 +1,4 @@
-name = "falconsystems-ssr"
+name = "website"
 main = "src/worker.tsx"
 compatibility_date = "2024-09-02"
 
