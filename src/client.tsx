@@ -19,5 +19,5 @@ setInterval(() => {
 }, 3000);
 
 document.getElementById("theme-toggle")?.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+  document.documentElement.classList.toggle("dark");
 });
