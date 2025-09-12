@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev src/worker.tsx",
-    "deploy": "wrangler deploy src/worker.tsx"
+    "deploy": "wrangler deploy src/worker.tsx",
+    "build": "tsc src/client.tsx src/App.tsx --jsx react-jsx --module esnext --target es2022 --moduleResolution bundler --outDir public/assets"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240821.1",

@@ -1,5 +1,5 @@
 import React from "react";
-// If using Tailwind/shadcn, ensure your build pipeline (Vite + PostCSS) is configured accordingly.
+
 export function App() {
   return (
     <html lang="en">
@@ -73,26 +73,7 @@ export function App() {
         <footer className="py-10 border-t mt-16 px-4 max-w-6xl mx-auto">
           <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Falcon Systems. All rights reserved.</p>
         </footer>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              const phrases = ["teaming with AI", "embracing the future", "unlocking potential"];
-              const el = document.getElementById("rotating-tagline");
-              let idx = 0;
-              setInterval(() => {
-                idx = (idx + 1) % phrases.length;
-                el.classList.add("opacity-0");
-                setTimeout(() => {
-                  el.textContent = phrases[idx];
-                  el.classList.remove("opacity-0");
-                }, 500);
-              }, 3000);
-              document.getElementById("theme-toggle").addEventListener("click", () => {
-                document.body.classList.toggle("dark");
-              });
-            `,
-          }}
-        />
+        <script type="module" src="/assets/client.js" />
       </body>
     </html>
   );
