@@ -1,24 +1,30 @@
 # Falcon Systems site
 
-Simple static site optimized for Cloudflare Pages. The page is written in plain HTML with Tailwind CSS from a CDN and a small vanilla JavaScript file for interactivity. There is no build step or server framework, keeping maintenance minimal.
+Server-rendered React site for Cloudflare Pages using Pages Functions and Hono.
 
 ## Development
-- Edit files in `public/` and open `index.html` in a browser, or run a local server such as:
-  ```bash
-  npx wrangler pages dev public
-  ```
-- Deploy with:
-  ```bash
-  npx wrangler pages deploy public
-  ```
+
+```bash
+npm install
+npm run build
+npm run dev:pages
+```
+
+Visit the URL shown by Wrangler. `/_health` should return `ok`.
+
+## Deploy
+
+```bash
+npm run deploy:pages
+```
 
 ## Structure
 ```
-public/
-  index.html
-  script.js
-wrangler.toml
+functions/
+  [[path]].ts
+src/
+  App.tsx
+  shell.tsx
+  client.tsx
+  index.css
 ```
-
-## License
-MIT
