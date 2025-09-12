@@ -9,13 +9,28 @@ export function App() {
         <title>Falcon Systems – Teaming with AI</title>
         <link rel="stylesheet" href="/assets/index.css" />
       </head>
-      <body className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-        <header className="py-6 px-4 max-w-6xl mx-auto">
-          <h1 className="text-3xl font-bold">Falcon Systems</h1>
+      <body className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900 transition-colors dark:from-slate-900 dark:to-black dark:text-slate-100">
+        <header className="py-6 px-4 max-w-6xl mx-auto flex items-center">
+          <h1 className="text-3xl font-bold flex-1">Falcon Systems</h1>
+          <button
+            id="theme-toggle"
+            className="px-3 py-1 rounded-full border border-slate-900 text-slate-900 dark:border-slate-100 dark:text-slate-100"
+            type="button"
+          >
+            Toggle theme
+          </button>
         </header>
         <main className="px-4 max-w-6xl mx-auto space-y-16">
           <section id="home">
-            <h2 className="text-4xl font-semibold">A practical framework for teaming with AI</h2>
+            <h2 className="text-4xl font-semibold">
+              A practical framework for {""}
+              <span
+                id="rotating-tagline"
+                className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-transparent bg-clip-text transition-opacity duration-500 inline-block"
+              >
+                teaming with AI
+              </span>
+            </h2>
             <p className="text-slate-600 mt-3">
               Falcon Systems helps organizations adopt AI safely and effectively—through an
               opinionated framework, hands‑on curriculum, and a managed, sandboxed
@@ -58,6 +73,26 @@ export function App() {
         <footer className="py-10 border-t mt-16 px-4 max-w-6xl mx-auto">
           <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Falcon Systems. All rights reserved.</p>
         </footer>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              const phrases = ["teaming with AI", "embracing the future", "unlocking potential"];
+              const el = document.getElementById("rotating-tagline");
+              let idx = 0;
+              setInterval(() => {
+                idx = (idx + 1) % phrases.length;
+                el.classList.add("opacity-0");
+                setTimeout(() => {
+                  el.textContent = phrases[idx];
+                  el.classList.remove("opacity-0");
+                }, 500);
+              }, 3000);
+              document.getElementById("theme-toggle").addEventListener("click", () => {
+                document.body.classList.toggle("dark");
+              });
+            `,
+          }}
+        />
       </body>
     </html>
   );
