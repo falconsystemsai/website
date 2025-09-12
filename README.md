@@ -1,52 +1,24 @@
-# Falcon Systems – Cloudflare Workers SSR (React + Hono)
+# Falcon Systems site
 
-This repository contains a minimal example of **server‑side rendering (SSR) with React 18 on Cloudflare Workers** using the [Hono](https://hono.dev) framework.
+Simple static site optimized for Cloudflare Pages. The page is written in plain HTML with Tailwind CSS from a CDN and a small vanilla JavaScript file for interactivity. There is no build step or server framework, keeping maintenance minimal.
 
-## Features
-- Cloudflare Workers native SSR (no Node APIs)
-- React 18 streaming rendering via `renderToReadableStream`
-- Simple `/api/contact` POST endpoint (logs submissions; replace with email/CRM)
-- Minimal HTML/CSS scaffold – drop your own components into `App.tsx`
-- Optional client‑side hydration with Vite (instructions in comments)
+## Development
+- Edit files in `public/` and open `index.html` in a browser, or run a local server such as:
+  ```bash
+  npx wrangler pages dev public
+  ```
+- Deploy with:
+  ```bash
+  npx wrangler pages publish public
+  ```
 
-## Getting Started
-
-### 1. Install dependencies
-```bash
-npm install
+## Structure
 ```
-
-### 2. Local development
-```bash
-npm run dev
+public/
+  index.html
+  script.js
+wrangler.toml
 ```
-This starts a local Cloudflare Workers dev server.
-
-### 3. Deploy to Cloudflare
-```bash
-npm run deploy
-```
-
-### 4. Customize the app
-Edit `src/App.tsx` to include your full landing page content (Tailwind/shadcn UI, etc.).  
-If you want to add hydration (client‑side React), follow the commented steps in `src/worker.tsx`.
-
-## Project Structure
-```
-falconsystems-workers-ssr/
-├── package.json
-├── wrangler.toml
-├── tsconfig.json
-└── src/
-    ├── App.tsx
-    └── worker.tsx
-```
-
-## Optional Hydration with Vite
-- Install Vite and `@vitejs/plugin-react`
-- Add `vite.config.ts`
-- Build your client bundle with `npx vite build`
-- Enable `[assets]` in `wrangler.toml` to serve static files
 
 ## License
 MIT
