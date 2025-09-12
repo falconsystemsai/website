@@ -1,15 +1,20 @@
 import { Hono } from "hono";
 import React from "react";
 import { renderToReadableStream } from "react-dom/server";
-import { Html } from "../src/shell";
-import { App } from "../src/App";
+import { Html } from "./shell";
+import { App } from "./App";
 
-const app = new Hono();
+type Env = { ASSETS: Fetcher };
+
+const app = new Hono<{ Bindings: Env }>();
 
 // Health check
 app.get("/_health", (c) => c.text("ok"));
 
-// SSR route (catch-all for app pages)
+// Serve built static assets (Vite output under dist/assets)
+app.get("/assets/*", (c) => c.env.ASSETS.fetch(c.req.raw));
+
+// SSR catch-all
 app.get("*", async (c) => {
   try {
     const stream: any = await renderToReadableStream(<Html><App /></Html>, {
@@ -17,8 +22,7 @@ app.get("*", async (c) => {
         console.error("SSR error:", err);
       },
     });
-    // Avoid returning before content is ready
-    if ((stream as any).allReady) await (stream as any).allReady;
+    if (stream.allReady) await stream.allReady; // ensure content before responding
     return new Response(stream, {
       headers: { "Content-Type": "text/html; charset=utf-8" },
     });
@@ -28,11 +32,4 @@ app.get("*", async (c) => {
   }
 });
 
-export const onRequest: PagesFunction = async (ctx) => {
-  const url = new URL(ctx.request.url);
-  // Let Pages serve built static assets directly
-  if (url.pathname.startsWith("/assets/")) {
-    return ctx.next();
-  }
-  return app.fetch(ctx.request, ctx.env, ctx);
-};
+export default app;
