@@ -391,7 +391,8 @@ const indexHTML = /* html */ `<!doctype html>
         const span = document.createElement('span');
         span.textContent = ch;
         span.className = 'char';
-        span.style.animationDelay = `${idx * 0.04}s`;
+        // Use string concatenation to avoid nested template literals in the outer HTML string
+        span.style.animationDelay = (idx * 0.04) + 's';
         segSpan.appendChild(span);
         idx++;
       });
