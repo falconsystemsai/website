@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { logo } from "./logo";
 
 export function App() {
@@ -22,17 +21,23 @@ export function App() {
           alt="Falcon Systems logo"
           className="h-12 w-auto transition-transform duration-300 hover:scale-110"
         />
-        <button
-          onClick={() => setDark(!dark)}
-          className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
-        >
-          {dark ? "Light Mode" : "Dark Mode"}
-        </button>
+        <nav className="flex items-center space-x-4">
+          <a
+            href="/leapspicker"
+            className="text-blue-600 dark:text-blue-400 transition-colors duration-300 hover:text-blue-800 dark:hover:text-blue-200"
+          >
+            LEAPS Picker
+          </a>
+          <button
+            onClick={() => setDark(!dark)}
+            className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+          >
+            {dark ? "Light Mode" : "Dark Mode"}
+          </button>
+        </nav>
       </header>
 
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+      <section
         className="flex flex-col items-center text-center py-20 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-gray-800 dark:to-gray-900"
       >
         <h1 className="text-4xl font-bold mb-4">Welcome to Falcon Systems</h1>
@@ -43,7 +48,7 @@ export function App() {
         >
           Get Started
         </a>
-      </motion.section>
+      </section>
 
       <footer className="p-4 text-center mt-auto">
         <a
