@@ -48,6 +48,7 @@ const indexHTML = /* html */ `<!doctype html>
   <meta property="og:description" content="Curriculum, teachings, and a managed sandbox to help teams leverage AI safely and effectively." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="data:image/svg+xml,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMjAwJyBoZWlnaHQ9JzYzMCc+PHJlY3Qgd2lkdGg9JzEyMDAnIGhlaWdodD0nNjMwJyBmaWxsPSIjMDBhNWZkIi8+PC9zdmc+" />
+  <link rel="icon" href="/dist/assets/Falcon-Logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
