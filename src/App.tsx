@@ -1,14 +1,11 @@
 import React from "react";
+import logo from "./assets/Falcon-Logo.png";
 
 export function App() {
   return (
     <>
       <header className="p-4">
-        <img
-          src="/assets/Falcon-Logo.png"
-          alt="Falcon Systems logo"
-          className="h-12 w-auto"
-        />
+        <img src={logo} alt="Falcon Systems logo" className="h-12 w-auto" />
       </header>
       {/* Main content */}
       {/* Footer */}
