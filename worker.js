@@ -375,7 +375,8 @@ const indexHTML = /* html */ `<!doctype html>
     segments.forEach(seg => {
       seg.text.split('').forEach(ch => {
         const span = document.createElement('span');
-        span.textContent = ch;
+        // Preserve spaces between words by using a non-breaking space character
+        span.textContent = ch === ' ' ? '\u00A0' : ch;
         span.className = 'char' + (seg.class ? ' ' + seg.class : '');
         // Use string concatenation to avoid nested template literals in the outer HTML string
         span.style.animationDelay = (idx * 0.04) + 's';
