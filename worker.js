@@ -1,6 +1,10 @@
 // Falcon Systems — Single-file Cloudflare Worker that serves a flashy landing page
 // Save this as worker.js and deploy with wrangler (see steps below).
 
+const R2_ORIGIN =
+  "https://e627cadd9a6a50a3de7877cd5ae8beaa.r2.cloudflarestorage.com";
+const LOGO_URL = `${R2_ORIGIN}/falconwebsite/Falcon-Logo.png`;
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -24,7 +28,7 @@ const htmlHeaders = {
     "default-src 'self'",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
-    "img-src 'self' data:",
+    `img-src 'self' data: ${R2_ORIGIN}`,
     "script-src 'self' 'unsafe-inline'",
     "connect-src 'self'",
     "frame-ancestors 'none'"
@@ -355,8 +359,8 @@ const indexHTML = /* html */ `<!doctype html>
 </html>`;
 
 // === Inline SVGs ===
-function logoImage(){
-  return `<img src="https://e627cadd9a6a50a3de7877cd5ae8beaa.r2.cloudflarestorage.com/falconwebsite/Falcon-Logo.png" alt="Falcon Systems logo">`;
+function logoImage() {
+  return `<img src="${LOGO_URL}" alt="Falcon Systems logo">`;
 }
 function chipIcon(){
   return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
