@@ -5,8 +5,11 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // Simple router: all paths serve the landing page (handy for anchors like /#features)
+    // Simple router
     if (request.method === 'GET') {
+      if (url.pathname === '/assets/falcon-logo.png') {
+        return new Response(logoPng, { headers: { 'content-type': 'image/png' } });
+      }
       return new Response(indexHTML, { headers: htmlHeaders });
     }
 
@@ -28,6 +31,9 @@ const htmlHeaders = {
   ].join('; '),
   'Cache-Control': 'public, max-age=300',
 };
+
+const logoPngBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==";
+const logoPng = Uint8Array.from(atob(logoPngBase64), c => c.charCodeAt(0));
 
 const indexHTML = /* html */ `<!doctype html>
 <html lang="en">
@@ -181,7 +187,7 @@ const indexHTML = /* html */ `<!doctype html>
   <header class="nav">
     <div class="nav-inner container">
       <a class="brand" href="#top" aria-label="Falcon Systems home">
-        ${logoSVG()}
+        ${logoImage()}
         <span>Falcon Systems</span>
       </a>
       <nav class="nav-links">
@@ -281,7 +287,7 @@ const indexHTML = /* html */ `<!doctype html>
   <footer>
     <div class="container foot">
       <div style="display:flex; align-items:center; gap:10px;">
-        ${logoSVG()}
+        ${logoImage()}
         <span class="small">© <span id="year"></span> Falcon Systems. All rights reserved.</span>
       </div>
       <div class="small">Built for speed on Cloudflare.</div>
@@ -347,19 +353,8 @@ const indexHTML = /* html */ `<!doctype html>
 </html>`;
 
 // === Inline SVGs ===
-function logoSVG(){
-  return `<svg viewBox="0 0 64 64" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#5de3ff"/>
-        <stop offset="60%" stop-color="#9f7bff"/>
-        <stop offset="100%" stop-color="#00ffa3"/>
-      </linearGradient>
-    </defs>
-    <path d="M8 36c10-2 18-8 24-18 2 7 7 12 14 14-7 2-12 7-14 14-6-10-14-14-24-10Z" fill="url(#g)"/>
-    <path d="M40 20c3 8 2 14-2 20 6-4 10-9 12-16-4 1-7-1-10-4Z" fill="url(#g)" opacity=".8"/>
-    <circle cx="28" cy="16" r="3" fill="#bff6ff"/>
-  </svg>`;
+function logoImage(){
+  return `<img src="/assets/falcon-logo.png" alt="Falcon Systems logo">`;
 }
 function chipIcon(){
   return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
