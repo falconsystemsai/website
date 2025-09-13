@@ -3,6 +3,7 @@ import React from "react";
 import { renderToReadableStream } from "react-dom/server";
 import { Html } from "./shell";
 import { App } from "./App";
+import { LeapsPicker } from "./LeapsPicker";
 
 type Env = { ASSETS: Fetcher };
 
@@ -17,7 +18,9 @@ app.get("/assets/*", (c) => c.env.ASSETS.fetch(c.req.raw));
 // SSR catch-all
 app.get("*", async (c) => {
   try {
-    const stream: any = await renderToReadableStream(<Html><App /></Html>, {
+    const url = new URL(c.req.url);
+    const page = url.pathname === "/leapspicker" ? <LeapsPicker /> : <App />;
+    const stream: any = await renderToReadableStream(<Html>{page}</Html>, {
       onError(err) {
         console.error("SSR error:", err);
       },
