@@ -20,11 +20,11 @@ export function App() {
         <img
           src={logo}
           alt="Falcon Systems logo"
-          className="h-12 w-auto transition-transform duration-250 hover:scale-110"
+          className="h-12 w-auto transition-transform duration-300 hover:scale-110"
         />
         <button
           onClick={() => setDark(!dark)}
-          className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 transition-colors duration-250 hover:bg-gray-300 dark:hover:bg-gray-600"
+          className="px-3 py-1 rounded bg-gray-200 dark:bg-gray-700 transition-colors duration-300 hover:bg-gray-300 dark:hover:bg-gray-600"
         >
           {dark ? "Light Mode" : "Dark Mode"}
         </button>
@@ -39,7 +39,7 @@ export function App() {
         <p className="mb-8 text-lg">Innovative solutions for a digital world.</p>
         <a
           href="#get-started"
-          className="px-6 py-3 bg-white text-purple-600 rounded-md font-semibold shadow transition-transform duration-250 hover:scale-105"
+          className="px-6 py-3 bg-white text-purple-600 rounded-md font-semibold shadow transition-transform duration-300 hover:scale-105"
         >
           Get Started
         </a>
@@ -48,7 +48,7 @@ export function App() {
       <footer className="p-4 text-center mt-auto">
         <a
           href="mailto:info@falconsystems.ai"
-          className="text-blue-600 dark:text-blue-400 transition-colors duration-250 hover:text-blue-800 dark:hover:text-blue-200"
+          className="text-blue-600 dark:text-blue-400 transition-colors duration-300 hover:text-blue-800 dark:hover:text-blue-200"
         >
           info@falconsystems.ai
         </a>
