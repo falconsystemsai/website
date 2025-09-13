@@ -279,7 +279,7 @@ const indexHTML = /* html */ `<!doctype html>
             <input aria-label="Email" type="email" name="email" placeholder="you@company.com" required />
             <button type="submit">Notify me</button>
           </div>
-          <small id="lead-msg" class="small" style="display:block; margin-top:6px; opacity:.85;"></small>
+          <small class="small" style="display:block; margin-top:6px; opacity:.85;">We'll open your email client to send us a message.</small>
         </form>
       </div>
     </section>
@@ -340,16 +340,12 @@ const indexHTML = /* html */ `<!doctype html>
     addEventListener('resize', resize); resize(); draw();
 
     // Email capture placeholder — replace with your backend/Forms later
-    async function submitLead(e){
+    function submitLead(e){
       e.preventDefault();
-      const msg = document.getElementById('lead-msg');
       const email = new FormData(e.target).get('email');
-      // No backend wired yet, so we just fake success and provide a handoff instruction.
-      await new Promise(r=>setTimeout(r, 500));
-        // Avoid nested template literals so this string is preserved correctly
-        // when the outer HTML template is evaluated.
-        msg.textContent = 'Thanks! We\'ll reach out at ' +
-          email + '. (Hook this form to your CRM or a Worker KV/D1 endpoint.)';
+      const subject = encodeURIComponent('Falcon Systems Contact');
+      const body = encodeURIComponent('Please follow up with ' + email + '.');
+      window.location.href = 'mailto:info@falconsystems.ai?subject=' + subject + '&body=' + body;
     }
 
     // Year
