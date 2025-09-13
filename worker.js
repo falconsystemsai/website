@@ -206,7 +206,7 @@ const indexHTML = /* html */ `<!doctype html>
   <main id="top" class="container">
     <section class="hero" aria-labelledby="hero-title">
       <span class="eyebrow"><span class="dot"></span> Practical AI, safely deployed</span>
-      <h1 id="hero-title" class="display">Your <span class="gradient-text">operating layer</span> for AI‑driven work</h1>
+      <h1 id="hero-title" class="display" aria-label="Your operating layer for AI-driven work"></h1>
       <p class="subhead">We help organizations adopt AI the right way: a rigorous framework, hands‑on curriculum, and a managed sandboxed environment where teams can learn, experiment, and ship—safely.</p>
       <div class="hero-ctas">
         <a class="cta-btn btn-primary" href="#contact">Start a pilot</a>
@@ -356,6 +356,39 @@ const indexHTML = /* html */ `<!doctype html>
       const body = encodeURIComponent('Please follow up with ' + email + '.');
       window.location.href = 'mailto:info@falconsystems.ai?subject=' + subject + '&body=' + body;
     }
+
+    // Typewriter effect for hero title
+    const heroTitle = document.getElementById('hero-title');
+    const segments = [
+      { text: 'Your ' },
+      { text: 'operating layer', class: 'gradient-text' },
+      { text: ' for AI-driven work' }
+    ];
+    function typeSegments(el, segs, delay){
+      let p = Promise.resolve();
+      for (const seg of segs){
+        p = p.then(function(){
+          const target = seg.class ? (function(){
+            const s = document.createElement('span');
+            s.className = seg.class;
+            el.appendChild(s);
+            return s;
+          })() : el;
+          return new Promise(function(res){
+            let i = 0;
+            (function type(){
+              if (i < seg.text.length){
+                target.textContent += seg.text[i++];
+                setTimeout(type, delay);
+              } else {
+                res();
+              }
+            })();
+          });
+        });
+      }
+    }
+    typeSegments(heroTitle, segments, 50);
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
