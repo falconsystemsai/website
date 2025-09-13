@@ -1,7 +1,7 @@
 import React from "react";
 
 const logo =
-  "https://e627cadd9a6a50a3de7877cd5ae8beaa.r2.cloudflarestorage.com/falconwebsite/Falcon-Logo.png";
+  "https://pub-d19e7dbfe91f43cf8b5602b495c5de08.r2.dev/Falcon-Logo.png";
 
 export function App() {
   return (
