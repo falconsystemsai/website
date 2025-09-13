@@ -356,7 +356,7 @@ const indexHTML = /* html */ `<!doctype html>
 
 // === Inline SVGs ===
 function logoImage(){
-  return `<img src="/assets/Falcon-Logo.png" alt="Falcon Systems logo">`;
+  return `<img src="https://e627cadd9a6a50a3de7877cd5ae8beaa.r2.cloudflarestorage.com/falconwebsite/Falcon-Logo.png" alt="Falcon Systems logo">`;
 }
 function chipIcon(){
   return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

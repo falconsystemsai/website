@@ -1,5 +1,7 @@
 import React, { PropsWithChildren } from "react";
-import logo from "./assets/Falcon-Logo.png";
+
+const logo =
+  "https://e627cadd9a6a50a3de7877cd5ae8beaa.r2.cloudflarestorage.com/falconwebsite/Falcon-Logo.png";
 
 export function Html({ children }: PropsWithChildren) {
   return (
