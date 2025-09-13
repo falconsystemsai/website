@@ -4,6 +4,7 @@
 const R2_ORIGIN =
   "https://pub-d19e7dbfe91f43cf8b5602b495c5de08.r2.dev";
 const LOGO_URL = `${R2_ORIGIN}/Falcon-Logo.png`;
+const LEAPSPICKER_URL = `${R2_ORIGIN}/leapspicker.png`;
 
 export default {
   async fetch(request, env, ctx) {
@@ -194,6 +195,7 @@ const indexHTML = /* html */ `<!doctype html>
       <nav class="nav-links">
         <a href="#features">Framework</a>
         <a href="#how">How it works</a>
+        <a href="#leapspicker">LEAPS Picker</a>
         <a href="#contact">Get in touch</a>
       </nav>
       <a class="cta-btn" href="#contact">Book a demo →</a>
@@ -266,6 +268,12 @@ const indexHTML = /* html */ `<!doctype html>
         <div class="step tilt"><b>2) Pilot</b><br/>Hands‑on cohort training in our sandbox. Instrumentation from day one.</div>
         <div class="step tilt"><b>3) Rollout</b><br/>Codify patterns into repeatable workflows with governance built‑in.</div>
       </div>
+    </section>
+
+    <section id="leapspicker">
+      <h2 class="display" style="font-size: clamp(28px,4.5vw,44px); margin: 0 0 6px;">LEAPS Picker</h2>
+      <p class="subhead" style="margin-bottom: 8px;">A custom fintech webapp showcasing backend AI integration to streamline long-term equity options strategies.</p>
+      <img src="${LEAPSPICKER_URL}" alt="LEAPS Picker screenshot" style="max-width:100%; border-radius: var(--radius); box-shadow: var(--shadow);" />
     </section>
 
     <section id="contact">
