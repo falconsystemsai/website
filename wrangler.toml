@@ -1,6 +1,10 @@
 name = "falcon-systems-site"
 main = "worker.js"
 compatibility_date = "2025-09-12"
+
+[assets]
+directory = "src/assets"
+binding = "ASSETS"
 # Optional: bind a custom domain after deploying
 # routes = [ { pattern = "falconsystems.ai", custom_domain = true } ]
 
