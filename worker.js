@@ -99,7 +99,7 @@ const indexHTML = /* html */ `<!doctype html>
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 24px; }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
-    .brand svg { width: 28px; height: 28px; filter: drop-shadow(0 4px 12px rgba(93,227,255,.45)); }
+    .brand svg, .logo { width: 28px; height: 28px; filter: drop-shadow(0 4px 12px rgba(93,227,255,.45)); }
     .brand span { font-weight: 700; letter-spacing: .5px; }
     .nav-links a { color: var(--muted); text-decoration: none; margin: 0 12px; font-weight: 500; }
     .nav-links a:hover { color: var(--text); }
@@ -360,7 +360,7 @@ const indexHTML = /* html */ `<!doctype html>
 
 // === Inline SVGs ===
 function logoImage() {
-  return `<img src="${LOGO_URL}" alt="Falcon Systems logo">`;
+  return `<img src="${LOGO_URL}" alt="Falcon Systems logo" class="logo">`;
 }
 function chipIcon(){
   return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
