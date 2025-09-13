@@ -122,13 +122,11 @@ const indexHTML = /* html */ `<!doctype html>
     h1.display { font-size: clamp(40px, 8vw, 84px); line-height: 1.03; margin: 18px 0; letter-spacing: -1px; font-weight: 900; }
     .gradient-text { background: linear-gradient(92deg, var(--brand), var(--brand-2) 40%, var(--accent) 80%);
       -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 24px rgba(93,227,255,.25)); }
-    #hero-title { filter: url(#liquid); }
-    #hero-title .char { display: inline-block; transform: translateY(120%) scaleY(1.3); filter: blur(8px); opacity: 0;
-      animation: liquid-reveal 0.8s ease forwards; }
-    @keyframes liquid-reveal {
-      0% { transform: translateY(120%) scaleY(1.3); filter: blur(8px); opacity: 0; }
-      60% { transform: translateY(-10%) scaleY(0.95); filter: blur(2px); opacity: 1; }
-      100% { transform: translateY(0) scaleY(1); filter: blur(0); opacity: 1; }
+    #hero-title .char { display: inline-block; filter: blur(12px); opacity: 0;
+      animation: focus-reveal 0.6s ease forwards; }
+    @keyframes focus-reveal {
+      from { filter: blur(12px); opacity: 0; }
+      to { filter: blur(0); opacity: 1; }
     }
     .subhead { color: var(--muted); font-size: clamp(16px, 2.4vw, 20px); max-width: 900px; margin: 0 auto 24px; }
 
@@ -311,15 +309,6 @@ const indexHTML = /* html */ `<!doctype html>
       <div class="small">Built for speed on Cloudflare.</div>
     </div>
   </footer>
-
-  <svg style="position:absolute; width:0; height:0; overflow:hidden;">
-    <defs>
-      <filter id="liquid">
-        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="8" result="noise"></feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4"></feDisplacementMap>
-      </filter>
-    </defs>
-  </svg>
 
   <script>
     // Tilt effect for interactive cards
