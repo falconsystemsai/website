@@ -1,7 +1,9 @@
-name = "falconsystems-ssr"
-main = "src/worker.tsx"
+name = "falcon-systems-site"
+main = "worker.js"
 compatibility_date = "2025-09-12"
+# Optional: bind a custom domain after deploying
+# routes = [ { pattern = "falconsystems.ai", custom_domain = true } ]
 
-[assets]
-directory = "dist"
-binding = "ASSETS"
+# Optional: add analytics / KV / etc. later
+# [vars]
+# ENV = "production"
