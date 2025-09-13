@@ -10,7 +10,27 @@ export default {
       return new Response(indexHTML, { headers: htmlHeaders });
     }
 
-    return new Response('Method Not Allowed', { status: 405 });
+    // Return headers without a body for HEAD requests
+    if (request.method === 'HEAD') {
+      return new Response(null, { headers: htmlHeaders });
+    }
+
+    // Allow preflight/OPTIONS requests without triggering a 405
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        headers: {
+          Allow: 'GET, HEAD, OPTIONS',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
+          'Access-Control-Allow-Headers': '*',
+        },
+      });
+    }
+
+    return new Response('Method Not Allowed', {
+      status: 405,
+      headers: { Allow: 'GET, HEAD, OPTIONS' },
+    });
   }
 };
 
