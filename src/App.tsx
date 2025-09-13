@@ -12,6 +12,14 @@ export function App() {
       </header>
       {/* Main content */}
       {/* Footer */}
+      <footer className="p-4 text-center">
+        <a
+          href="mailto:info@falconsystems.ai"
+          className="text-blue-600 hover:underline"
+        >
+          info@falconsystems.ai
+        </a>
+      </footer>
     </>
   );
 }
