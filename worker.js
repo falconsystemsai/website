@@ -122,6 +122,14 @@ const indexHTML = /* html */ `<!doctype html>
     h1.display { font-size: clamp(40px, 8vw, 84px); line-height: 1.03; margin: 18px 0; letter-spacing: -1px; font-weight: 900; }
     .gradient-text { background: linear-gradient(92deg, var(--brand), var(--brand-2) 40%, var(--accent) 80%);
       -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 24px rgba(93,227,255,.25)); }
+    #hero-title { filter: url(#gooey); }
+    #hero-title .char { display: inline-block; transform: translateY(120%); filter: blur(12px); opacity: 0;
+      animation: gooey-reveal 0.8s ease forwards; }
+    @keyframes gooey-reveal {
+      0% { transform: translateY(120%); filter: blur(12px); opacity: 0; }
+      60% { transform: translateY(-10%); filter: blur(2px); opacity: 1; }
+      100% { transform: translateY(0); filter: blur(0); opacity: 1; }
+    }
     .subhead { color: var(--muted); font-size: clamp(16px, 2.4vw, 20px); max-width: 900px; margin: 0 auto 24px; }
 
     .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
@@ -304,6 +312,16 @@ const indexHTML = /* html */ `<!doctype html>
     </div>
   </footer>
 
+  <svg style="position:absolute; width:0; height:0; overflow:hidden;">
+    <defs>
+      <filter id="gooey">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"></feGaussianBlur>
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="goo"></feColorMatrix>
+        <feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite>
+      </filter>
+    </defs>
+  </svg>
+
   <script>
     // Tilt effect for interactive cards
     const tiltEls = () => document.querySelectorAll('.tilt');
@@ -357,7 +375,7 @@ const indexHTML = /* html */ `<!doctype html>
       window.location.href = 'mailto:info@falconsystems.ai?subject=' + subject + '&body=' + body;
     }
 
-    // Text scramble effect for hero title
+    // Gooey reveal effect for hero title
     const heroTitle = document.getElementById('hero-title');
     const segments = [
       { text: 'Your ' },
@@ -365,69 +383,19 @@ const indexHTML = /* html */ `<!doctype html>
       { text: ' for AI-driven work' }
     ];
 
-    class TextScramble {
-      constructor(el){
-        this.el = el;
-        this.chars = '!<>-_\\/[]{}—=+*^?#________';
-        this.update = this.update.bind(this);
-      }
-      setText(newText){
-        const oldText = this.el.textContent;
-        const length = Math.max(oldText.length, newText.length);
-        const promise = new Promise(resolve => this.resolve = resolve);
-        this.queue = [];
-        for (let i = 0; i < length; i++){
-          const from = oldText[i] || '';
-          const to = newText[i] || '';
-          const start = Math.floor(Math.random() * 40);
-          const end = start + Math.floor(Math.random() * 40);
-          this.queue.push({ from, to, start, end, char: '' });
-        }
-        cancelAnimationFrame(this.frameRequest);
-        this.frame = 0;
-        this.update();
-        return promise;
-      }
-      update(){
-        let output = '';
-        let complete = 0;
-        for (let i = 0, n = this.queue.length; i < n; i++){
-          let { from, to, start, end, char } = this.queue[i];
-          if (this.frame >= end){
-            complete++;
-            output += to;
-          } else if (this.frame >= start){
-            if (!char || Math.random() < 0.28){
-              char = this.randomChar();
-              this.queue[i].char = char;
-            }
-            output += char;
-          } else {
-            output += from;
-          }
-        }
-        this.el.textContent = output;
-        if (complete === this.queue.length){
-          this.resolve();
-        } else {
-          this.frameRequest = requestAnimationFrame(this.update);
-          this.frame++;
-        }
-      }
-      randomChar(){
-        return this.chars[Math.floor(Math.random() * this.chars.length)];
-      }
-    }
-
-    const scramble = new TextScramble(heroTitle);
-    scramble.setText(segments.map(s => s.text).join('')).then(() => {
-      heroTitle.textContent = '';
-      segments.forEach(seg => {
+    let idx = 0;
+    segments.forEach(seg => {
+      const segSpan = document.createElement('span');
+      if (seg.class) segSpan.className = seg.class;
+      seg.text.split('').forEach(ch => {
         const span = document.createElement('span');
-        if (seg.class) span.className = seg.class;
-        span.textContent = seg.text;
-        heroTitle.appendChild(span);
+        span.textContent = ch;
+        span.className = 'char';
+        span.style.animationDelay = `${idx * 0.04}s`;
+        segSpan.appendChild(span);
+        idx++;
       });
+      heroTitle.appendChild(segSpan);
     });
 
     // Year
