@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
-const logo =
-  "https://pub-d19e7dbfe91f43cf8b5602b495c5de08.r2.dev/Falcon-Logo.png";
+import { logo } from "./logo";
 
 export function App() {
   const [dark, setDark] = useState(false);
