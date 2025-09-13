@@ -7,8 +7,8 @@ export default {
 
     // Simple router
     if (request.method === 'GET') {
-      if (url.pathname === '/assets/Falcon-Logo.png') {
-        return new Response(logoPng, { headers: { 'content-type': 'image/png' } });
+      if (url.pathname.startsWith('/assets/')) {
+        return env.ASSETS.fetch(request);
       }
       return new Response(indexHTML, { headers: htmlHeaders });
     }
@@ -31,9 +31,6 @@ const htmlHeaders = {
   ].join('; '),
   'Cache-Control': 'public, max-age=300',
 };
-
-const logoPngBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==";
-const logoPng = Uint8Array.from(atob(logoPngBase64), c => c.charCodeAt(0));
 
 const indexHTML = /* html */ `<!doctype html>
 <html lang="en">
