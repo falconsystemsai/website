@@ -7,7 +7,7 @@ export default {
 
     // Simple router
     if (request.method === 'GET') {
-      if (url.pathname === '/assets/falcon-logo.png') {
+      if (url.pathname === '/assets/Falcon-Logo.png') {
         return new Response(logoPng, { headers: { 'content-type': 'image/png' } });
       }
       return new Response(indexHTML, { headers: htmlHeaders });
@@ -359,7 +359,7 @@ const indexHTML = /* html */ `<!doctype html>
 
 // === Inline SVGs ===
 function logoImage(){
-  return `<img src="/assets/falcon-logo.png" alt="Falcon Systems logo">`;
+  return `<img src="/assets/Falcon-Logo.png" alt="Falcon Systems logo">`;
 }
 function chipIcon(){
   return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

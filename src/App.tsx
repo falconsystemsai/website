@@ -5,7 +5,7 @@ export function App() {
     <>
       <header className="p-4">
         <img
-          src="/assets/falcon-logo.png"
+          src="/assets/Falcon-Logo.png"
           alt="Falcon Systems logo"
           className="h-12 w-auto"
         />
