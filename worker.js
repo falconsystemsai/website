@@ -373,18 +373,15 @@ const indexHTML = /* html */ `<!doctype html>
 
     let idx = 0;
     segments.forEach(seg => {
-      const segSpan = document.createElement('span');
-      if (seg.class) segSpan.className = seg.class;
       seg.text.split('').forEach(ch => {
         const span = document.createElement('span');
         span.textContent = ch;
-        span.className = 'char';
+        span.className = 'char' + (seg.class ? ' ' + seg.class : '');
         // Use string concatenation to avoid nested template literals in the outer HTML string
         span.style.animationDelay = (idx * 0.04) + 's';
-        segSpan.appendChild(span);
+        heroTitle.appendChild(span);
         idx++;
       });
-      heroTitle.appendChild(segSpan);
     });
 
     // Year
