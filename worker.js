@@ -124,6 +124,7 @@ const indexHTML = /* html */ `<!doctype html>
       -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 24px rgba(93,227,255,.25)); }
     #hero-title .char { display: inline-block; filter: blur(12px); opacity: 0;
       animation: focus-reveal 0.6s ease forwards; }
+    #hero-title .char.space { width: 0.5em; }
     @keyframes focus-reveal {
       from { filter: blur(12px); opacity: 0; }
       to { filter: blur(0); opacity: 1; }
@@ -375,10 +376,13 @@ const indexHTML = /* html */ `<!doctype html>
     segments.forEach(seg => {
       seg.text.split('').forEach(ch => {
         const span = document.createElement('span');
-        // Preserve spaces between words by using a non-breaking space character
-        span.textContent = ch === ' ' ? '\u00A0' : ch;
-        span.className = 'char' + (seg.class ? ' ' + seg.class : '');
-        // Use string concatenation to avoid nested template literals in the outer HTML string
+        if (ch === ' ') {
+          // Empty span with fixed width to keep word spacing
+          span.className = 'char space' + (seg.class ? ' ' + seg.class : '');
+        } else {
+          span.textContent = ch;
+          span.className = 'char' + (seg.class ? ' ' + seg.class : '');
+        }
         span.style.animationDelay = (idx * 0.04) + 's';
         heroTitle.appendChild(span);
         idx++;
