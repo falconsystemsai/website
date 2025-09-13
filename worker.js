@@ -304,8 +304,10 @@ const indexHTML = /* html */ `<!doctype html>
       const py = (e.clientY - rect.top) / rect.height; // 0..1
       const rx = clamp((.5 - py) * 10, -10, 10);
       const ry = clamp((px - .5) * 10, -10, 10);
+      // Use string concatenation instead of a template literal to avoid
+      // nested template evaluation inside the outer HTML string.
       this.style.transform =
-        `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+        'perspective(800px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-2px)';
     }
     function resetTilt(){ this.style.transform = ''; }
     function bindTilt(){ tiltEls().forEach(el=>{ el.addEventListener('mousemove', handleTilt); el.addEventListener('mouseleave', resetTilt); }); }
@@ -343,7 +345,10 @@ const indexHTML = /* html */ `<!doctype html>
       const email = new FormData(e.target).get('email');
       // No backend wired yet, so we just fake success and provide a handoff instruction.
       await new Promise(r=>setTimeout(r, 500));
-      msg.textContent = `Thanks! We'll reach out at ${email}. (Hook this form to your CRM or a Worker KV/D1 endpoint.)`;
+        // Avoid nested template literals so this string is preserved correctly
+        // when the outer HTML template is evaluated.
+        msg.textContent = 'Thanks! We\'ll reach out at ' +
+          email + '. (Hook this form to your CRM or a Worker KV/D1 endpoint.)';
     }
 
     // Year
