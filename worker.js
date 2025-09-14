@@ -119,7 +119,7 @@ const indexHTML = /* html */ `<!doctype html>
       border: 1px solid rgba(255,255,255,.12); color: var(--muted); font-weight: 600; }
     .eyebrow .dot { width: 8px; height: 8px; border-radius: 100%; background: radial-gradient(circle at 30% 30%, var(--brand), transparent 70%); }
 
-    h1.display { font-size: clamp(40px, 8vw, 84px); line-height: 1.03; margin: 18px 0; letter-spacing: -1px; font-weight: 900; }
+    h1.display { font-size: clamp(40px, 8vw, 84px); line-height: 1.15; margin: 18px 0; letter-spacing: -1px; font-weight: 900; }
     .gradient-text { background: linear-gradient(92deg, var(--brand), var(--brand-2) 40%, var(--accent) 80%);
       -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 24px rgba(93,227,255,.25)); }
     #hero-title .char { display: inline-block; filter: blur(12px); opacity: 0;
