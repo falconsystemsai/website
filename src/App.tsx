@@ -45,10 +45,7 @@ export function App() {
       <section
         className="flex flex-col items-center text-center py-20 bg-gradient-to-r from-purple-500 to-pink-500 dark:from-gray-800 dark:to-gray-900"
       >
-        <h1
-          className="text-4xl font-bold mb-4 stroke-fill-animation"
-          onAnimationEnd={(e) => e.currentTarget.classList.remove("stroke-fill-animation")}
-        >
+        <h1 className="text-4xl font-bold mb-4 gradient-text">
           Welcome to Falcon Systems
         </h1>
         <p className="mb-8 text-lg">Innovative solutions for a digital world.</p>
