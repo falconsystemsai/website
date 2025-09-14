@@ -120,14 +120,18 @@ const indexHTML = /* html */ `<!doctype html>
     .eyebrow .dot { width: 8px; height: 8px; border-radius: 100%; background: radial-gradient(circle at 30% 30%, var(--brand), transparent 70%); }
 
     h1.display { font-size: clamp(40px, 8vw, 84px); line-height: 1.25; margin: 18px 0; letter-spacing: -1px; font-weight: 900; }
-    .gradient-text { background: linear-gradient(92deg, var(--brand), var(--brand-2) 40%, var(--accent) 80%);
-      -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 6px 24px rgba(93,227,255,.25)); }
-    #hero-title .char { display: inline-block; filter: blur(12px); opacity: 0;
-      animation: focus-reveal 0.6s ease forwards; }
-    #hero-title .char.space { width: 0.5em; }
-    @keyframes focus-reveal {
-      from { filter: blur(12px); opacity: 0; }
-      to { filter: blur(0); opacity: 1; }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--brand), var(--brand-2), var(--accent), var(--brand));
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 6px 24px rgba(93,227,255,.25));
+      animation: gradient-shift 5s infinite alternate;
+    }
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
     .subhead { color: var(--muted); font-size: clamp(16px, 2.4vw, 20px); max-width: 900px; margin: 0 auto 24px; }
 
@@ -213,7 +217,7 @@ const indexHTML = /* html */ `<!doctype html>
   <main id="top" class="container">
     <section class="hero" aria-labelledby="hero-title">
       <span class="eyebrow"><span class="dot"></span> Practical AI, safely deployed</span>
-      <h1 id="hero-title" class="display" aria-label="Your operating layer for AI-driven work"></h1>
+      <h1 id="hero-title" class="display gradient-text">Your operating layer for AI-driven work</h1>
       <p class="subhead">We help organizations adopt AI the right way: a rigorous framework, hands‑on curriculum, and a managed sandboxed environment where teams can learn, experiment, and ship—safely.</p>
       <div class="hero-ctas">
         <a class="cta-btn btn-primary" href="#contact">Start a pilot</a>
@@ -363,31 +367,6 @@ const indexHTML = /* html */ `<!doctype html>
       const body = encodeURIComponent('Please follow up with ' + email + '.');
       window.location.href = 'mailto:info@falconsystems.ai?subject=' + subject + '&body=' + body;
     }
-
-    // Gooey reveal effect for hero title
-    const heroTitle = document.getElementById('hero-title');
-    const segments = [
-      { text: 'Your ' },
-      { text: 'operating layer', class: 'gradient-text' },
-      { text: ' for AI-driven work' }
-    ];
-
-    let idx = 0;
-    segments.forEach(seg => {
-      seg.text.split('').forEach(ch => {
-        const span = document.createElement('span');
-        if (ch === ' ') {
-          // Empty span with fixed width to keep word spacing
-          span.className = 'char space' + (seg.class ? ' ' + seg.class : '');
-        } else {
-          span.textContent = ch;
-          span.className = 'char' + (seg.class ? ' ' + seg.class : '');
-        }
-        span.style.animationDelay = (idx * 0.04) + 's';
-        heroTitle.appendChild(span);
-        idx++;
-      });
-    });
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
