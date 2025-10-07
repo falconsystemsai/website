@@ -5,6 +5,7 @@ const R2_ORIGIN =
   "https://pub-d19e7dbfe91f43cf8b5602b495c5de08.r2.dev";
 const LOGO_URL = `${R2_ORIGIN}/Falcon-Logo.png`;
 const LEAPSPICKER_URL = `${R2_ORIGIN}/leapspicker.png`;
+const UOA_URL = "https://falconsystems.ai/uoa.png";
 
 export default {
   async fetch(request, env, ctx) {
@@ -29,7 +30,7 @@ const htmlHeaders = {
     "default-src 'self'",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
-    `img-src 'self' data: ${R2_ORIGIN}`,
+    `img-src 'self' data: ${R2_ORIGIN} https://falconsystems.ai`,
     "script-src 'self' 'unsafe-inline'",
     "connect-src 'self'",
     "frame-ancestors 'none'"
@@ -208,6 +209,7 @@ const indexHTML = /* html */ `<!doctype html>
         <a href="#features">Framework</a>
         <a href="#how">How it works</a>
         <a href="#leapspicker">LEAPS Picker</a>
+        <a href="#uoa">UOA Radar</a>
         <a href="#contact">Get in touch</a>
       </nav>
       <a class="cta-btn" href="#contact">Book a demo →</a>
@@ -286,6 +288,12 @@ const indexHTML = /* html */ `<!doctype html>
       <h2 class="display" style="font-size: clamp(28px,4.5vw,44px); margin: 0 0 6px;">LEAPS Picker</h2>
       <p class="subhead" style="margin-bottom: 8px;">A custom fintech webapp showcasing backend AI integration to streamline long-term equity options strategies.</p>
       <img src="${LEAPSPICKER_URL}" alt="LEAPS Picker screenshot" style="max-width:100%; border-radius: var(--radius); box-shadow: var(--shadow);" />
+    </section>
+
+    <section id="uoa">
+      <h2 class="display" style="font-size: clamp(28px,4.5vw,44px); margin: 0 0 6px;">Unusual Options Activity Radar</h2>
+      <p class="subhead" style="margin-bottom: 8px;">A live market surveillance dashboard highlighting outlier flow with streaming data, smart filters, and instant drilldowns for active traders.</p>
+      <img src="${UOA_URL}" alt="Unusual Options Activity Radar screenshot" style="max-width:100%; border-radius: var(--radius); box-shadow: var(--shadow);" />
     </section>
 
     <section id="contact">
