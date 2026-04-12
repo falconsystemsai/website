@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Tempovore logo</title>
+  <desc id="desc">Gold Tempovore wordmark with a theta symbol and ornamental emblem on a dark background.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cda45a" />
+      <stop offset="50%" stop-color="#f2d28d" />
+      <stop offset="100%" stop-color="#b88733" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="#120f0f" />
+
+  <g fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.9">
+    <circle cx="600" cy="190" r="120" />
+    <line x1="600" y1="190" x2="600" y2="130" />
+    <line x1="600" y1="190" x2="675" y2="145" />
+  </g>
+
+  <g fill="none" stroke="url(#gold)" stroke-width="8" stroke-linecap="round" opacity="0.75">
+    <path d="M505 136c-35 25-55 50-60 75"/>
+    <path d="M695 136c35 25 55 50 60 75"/>
+    <path d="M600 330v160"/>
+    <path d="M600 490c-20 45-46 85-70 130"/>
+    <path d="M600 490c20 45 46 85 70 130"/>
+  </g>
+
+  <text x="600" y="410" text-anchor="middle" fill="url(#gold)" font-size="116" font-family="Garamond, 'Times New Roman', serif" letter-spacing="8">
+    TEMPΘVORE
+  </text>
+</svg>
