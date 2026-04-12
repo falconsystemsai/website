@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import React from "react";
 import { renderToReadableStream } from "react-dom/server";
 import { Html } from "./shell";
-import { App } from "./App";
+import { resolvePage } from "./routes";
 
 type Env = { ASSETS: Fetcher };
 
@@ -17,7 +17,7 @@ app.get("/assets/*", (c) => c.env.ASSETS.fetch(c.req.raw));
 // SSR catch-all
 app.get("*", async (c) => {
   try {
-    const page = <App />;
+    const page = resolvePage(new URL(c.req.url).pathname);
     const stream: any = await renderToReadableStream(<Html>{page}</Html>, {
       onError(err) {
         console.error("SSR error:", err);
