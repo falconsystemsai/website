@@ -47,24 +47,49 @@ const tempovoreHTML = /* html */ `<!doctype html>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TempΘvore | Falcon Systems</title>
+  <meta name="description" content="TempΘvore band page" />
   <style>
-    html, body { height: 100%; margin: 0; }
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
     body {
+      margin: 0;
+      min-height: 100vh;
       display: grid;
       place-items: center;
-      background: #000;
       padding: 24px;
-      box-sizing: border-box;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: radial-gradient(circle at 20% 20%, #27201a, #120f0f 65%);
+      color: #f2d28d;
     }
-    img {
-      max-width: 100%;
-      max-height: 90vh;
-      object-fit: contain;
+    main {
+      width: min(1080px, 100%);
+      text-align: center;
+    }
+    h1 {
+      letter-spacing: 0.08em;
+      margin: 0 0 20px;
+      font-size: clamp(2rem, 6vw, 4.8rem);
+    }
+    .logo {
+      width: min(100%, 920px);
+      border-radius: 16px;
+      border: 1px solid rgba(242, 210, 141, 0.35);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+    }
+    p {
+      margin-top: 24px;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+      letter-spacing: 0.02em;
+      color: #f8e6bf;
     }
   </style>
 </head>
 <body>
-  <img src="https://falconsystems.ai/tempovore.png" alt="Tempovore band artwork" />
+  <main>
+    <h1>TempΘvore</h1>
+    <img class="logo" src="/assets/tempovore-logo.svg" alt="Tempovore band logo" />
+    <p>Progressive metal • cinematic depth • unrelenting pulse</p>
+  </main>
 </body>
 </html>`;
 
