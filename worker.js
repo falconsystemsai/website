@@ -424,32 +424,4 @@ const indexHTML = /* html */ `<!doctype html>
       window.location.href = 'mailto:info@falconsystems.ai?subject=' + subject + '&body=' + body;
     }
 
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>`;
 
-// === Inline SVGs ===
-function logoImage() {
-  return `<img src="${LOGO_URL}" alt="Falcon Systems logo" class="logo">`;
-}
-function chipIcon(){
-  return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="6" y="6" width="12" height="12" rx="2" stroke="#7ed8ff" stroke-width="1.5"/>
-    <path d="M9 9h6v6H9z" fill="#7ed8ff" opacity=".25"/>
-    <path d="M3 9h3M3 15h3M18 3v3M12 3v3M6 21v-3M12 21v-3M21 9h-3M21 15h-3" stroke="#7ed8ff" stroke-width="1.2" stroke-linecap="round"/>
-  </svg>`;
-}
-function shieldIcon(){
-  return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="#c5b4ff" stroke-width="1.5"/>
-    <path d="M9 12l2 2 4-4" stroke="#c5b4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>`;
-}
-function rocketIcon(){
-  return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M7 14c-1 3-3 4-4 4 0-1 1-3 4-4zm10-10c-4 0-8 3-9 7l5 5c4-1 7-5 7-9 0-1-1-3-3-3z" stroke="#9fffdc" stroke-width="1.5"/>
-    <circle cx="16" cy="8" r="2" fill="#9fffdc" opacity=".4"/>
-  </svg>`;
-}
