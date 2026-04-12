@@ -16,7 +16,7 @@ export default {
         return env.ASSETS.fetch(request);
       }
       if (url.pathname === '/tempovore' || url.pathname === '/tempovore/') {
-        return Response.redirect('https://falconsystems.ai/tempovore.png', 302);
+        return new Response(tempovoreHTML, { headers: htmlHeaders });
       }
       return new Response(indexHTML, { headers: htmlHeaders });
     }
@@ -47,24 +47,49 @@ const tempovoreHTML = /* html */ `<!doctype html>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TempΘvore | Falcon Systems</title>
+  <meta name="description" content="TempΘvore band page" />
   <style>
-    html, body { height: 100%; margin: 0; }
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
     body {
+      margin: 0;
+      min-height: 100vh;
       display: grid;
       place-items: center;
-      background: #000;
       padding: 24px;
-      box-sizing: border-box;
+      font-family: Georgia, 'Times New Roman', serif;
+      background: radial-gradient(circle at 20% 20%, #27201a, #120f0f 65%);
+      color: #f2d28d;
     }
-    img {
-      max-width: 100%;
-      max-height: 90vh;
-      object-fit: contain;
+    main {
+      width: min(1080px, 100%);
+      text-align: center;
+    }
+    h1 {
+      letter-spacing: 0.08em;
+      margin: 0 0 20px;
+      font-size: clamp(2rem, 6vw, 4.8rem);
+    }
+    .logo {
+      width: min(100%, 920px);
+      border-radius: 16px;
+      border: 1px solid rgba(242, 210, 141, 0.35);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+    }
+    p {
+      margin-top: 24px;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+      letter-spacing: 0.02em;
+      color: #f8e6bf;
     }
   </style>
 </head>
 <body>
-  <img src="https://falconsystems.ai/tempovore.png" alt="Tempovore band artwork" />
+  <main>
+    <h1>TempΘvore</h1>
+    <img class="logo" src="/assets/tempovore-logo.svg" alt="Tempovore band logo" />
+    <p>Progressive metal • cinematic depth • unrelenting pulse</p>
+  </main>
 </body>
 </html>`;
 
@@ -399,32 +424,4 @@ const indexHTML = /* html */ `<!doctype html>
       window.location.href = 'mailto:info@falconsystems.ai?subject=' + subject + '&body=' + body;
     }
 
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>`;
 
-// === Inline SVGs ===
-function logoImage() {
-  return `<img src="${LOGO_URL}" alt="Falcon Systems logo" class="logo">`;
-}
-function chipIcon(){
-  return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="6" y="6" width="12" height="12" rx="2" stroke="#7ed8ff" stroke-width="1.5"/>
-    <path d="M9 9h6v6H9z" fill="#7ed8ff" opacity=".25"/>
-    <path d="M3 9h3M3 15h3M18 3v3M12 3v3M6 21v-3M12 21v-3M21 9h-3M21 15h-3" stroke="#7ed8ff" stroke-width="1.2" stroke-linecap="round"/>
-  </svg>`;
-}
-function shieldIcon(){
-  return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" stroke="#c5b4ff" stroke-width="1.5"/>
-    <path d="M9 12l2 2 4-4" stroke="#c5b4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>`;
-}
-function rocketIcon(){
-  return `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M7 14c-1 3-3 4-4 4 0-1 1-3 4-4zm10-10c-4 0-8 3-9 7l5 5c4-1 7-5 7-9 0-1-1-3-3-3z" stroke="#9fffdc" stroke-width="1.5"/>
-    <circle cx="16" cy="8" r="2" fill="#9fffdc" opacity=".4"/>
-  </svg>`;
-}
