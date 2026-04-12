@@ -15,6 +15,9 @@ export default {
       if (url.pathname.startsWith('/assets/')) {
         return env.ASSETS.fetch(request);
       }
+      if (url.pathname === '/tempovore' || url.pathname === '/tempovore/') {
+        return Response.redirect('https://falconsystems.ai/tempovore.png', 302);
+      }
       return new Response(indexHTML, { headers: htmlHeaders });
     }
 
@@ -36,6 +39,34 @@ const htmlHeaders = {
   ].join('; '),
   'Cache-Control': 'public, max-age=300',
 };
+
+
+const tempovoreHTML = /* html */ `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TempΘvore | Falcon Systems</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: grid;
+      place-items: center;
+      background: #000;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://falconsystems.ai/tempovore.png" alt="Tempovore band artwork" />
+</body>
+</html>`;
 
 const indexHTML = /* html */ `<!doctype html>
 <html lang="en">
