@@ -5,22 +5,16 @@ const imageUrl =
 
 export function TempovorePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#030303] text-white">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-20 top-[-15%] h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl" />
-        <div className="absolute -right-24 bottom-[-10%] h-96 w-96 rounded-full bg-cyan-400/20 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.08),transparent_45%)]" />
-      </div>
-
-      <section className="relative z-10 flex min-h-screen items-center justify-center px-4 py-8 sm:px-8">
-        <figure className="relative w-full max-w-6xl rounded-2xl border border-white/10 bg-black/35 p-2 shadow-[0_0_90px_rgba(236,72,153,0.14)] backdrop-blur-sm sm:p-4">
+    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-black to-slate-900 px-6 py-10 sm:px-10 sm:py-14">
+      <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl items-center justify-center rounded-3xl border border-white/20 bg-white/5 p-4 shadow-2xl ring-1 ring-cyan-300/30 backdrop-blur md:p-8">
+        <div className="w-full rounded-2xl border border-fuchsia-300/30 bg-black/50 p-3 shadow-[0_0_60px_rgba(34,211,238,0.25)] md:p-5">
           <img
             src={imageUrl}
             alt="Tempovore"
-            className="mx-auto max-h-[85vh] w-full rounded-xl object-contain"
+            className="mx-auto w-full max-w-5xl rounded-xl object-contain"
           />
-        </figure>
-      </section>
+        </div>
+      </div>
     </main>
   );
 }
