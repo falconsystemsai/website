@@ -7,7 +7,7 @@ export function Html({ children }: PropsWithChildren) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Falcon Systems – Teaming with AI</title>
-        <link rel="stylesheet" href="/assets/index.css" />
+        <link rel="stylesheet" href="/assets/client.css" />
         <link rel="icon" type="image/png" href="/dist/assets/Falcon-Logo.png" />
       </head>
       <body className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
