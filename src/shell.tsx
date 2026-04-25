@@ -6,11 +6,11 @@ export function Html({ children }: PropsWithChildren) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Falcon Systems – Teaming with AI</title>
+        <title>Falcon Systems – AI Multifamily Deal Intelligence</title>
         <link rel="stylesheet" href="/assets/client.css" />
         <link rel="icon" type="image/png" href="/dist/assets/Falcon-Logo.png" />
       </head>
-      <body className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+      <body style={{ margin: 0, background: "#020617", color: "#e2e8f0" }}>
         <div id="root">{children}</div>
         <script type="module" src="/assets/client.js"></script>
       </body>
