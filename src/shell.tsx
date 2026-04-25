@@ -10,7 +10,7 @@ export function Html({ children }: PropsWithChildren) {
         <link rel="stylesheet" href="/assets/client.css" />
         <link rel="icon" type="image/png" href="/dist/assets/Falcon-Logo.png" />
       </head>
-      <body className="min-h-screen bg-slate-950 text-slate-100">
+      <body style={{ margin: 0, background: "#020617", color: "#e2e8f0" }}>
         <div id="root">{children}</div>
         <script type="module" src="/assets/client.js"></script>
       </body>
